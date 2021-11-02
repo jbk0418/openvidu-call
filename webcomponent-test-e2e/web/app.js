@@ -103,7 +103,7 @@ async function joinSession(sessionName, user) {
  *   3) Configure OpenVidu Web Component in your client side with the token
  */
 
-var OPENVIDU_SERVER_URL = "https://localhost:4443" ;
+var OPENVIDU_SERVER_URL = "https://localhost:5443" ;
 var OPENVIDU_SERVER_SECRET = 'MY_SECRET';
 
 function getToken(sessionName) {

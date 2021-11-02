@@ -46,7 +46,7 @@ docker build -f dev.dockerfile -t <your-tag-name> --build-arg BRANCH_NAME=<branc
 
 
 ```
-docker run -p 5000:<your_port> -e SERVER_PORT=<your_port> -e OPENVIDU_URL=<your_openvidu_url> -e OPENVIDU_SECRET=<your_secret> openvidu/openvidu-call:X.Y.Z
+docker run -p 5442:<your_port> -e SERVER_PORT=<your_port> -e OPENVIDU_URL=<your_openvidu_url> -e OPENVIDU_SECRET=<your_secret> openvidu/openvidu-call:X.Y.Z
 ```
 
 Go to **http://localhost:your_port**

@@ -7,7 +7,7 @@ const { Builder, By, Key, promise, until } = require('selenium-webdriver');
 
 
 const url = 'http://127.0.0.1:8080/#/';
-const timeout = 5000;
+const timeout = 5442;
 const sleepTimeout = 500;
 
 describe('Checkout localhost app', function () {

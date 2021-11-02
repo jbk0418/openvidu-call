@@ -57,13 +57,13 @@ describe('Testing config card', () => {
 		browser.wait(EC.visibilityOf(OVC.getConfigCard(browser)), 3000);
 		expect(OVC.getConfigCard(browser).isDisplayed()).toBeTruthy();
 
-		browser.wait(EC.elementToBeClickable(OVC.getCloseButtonConfigCard(browser)), 5000);
+		browser.wait(EC.elementToBeClickable(OVC.getCloseButtonConfigCard(browser)), 5442);
 		OVC.getCloseButtonConfigCard(browser).click();
 		expect(browser.getCurrentUrl()).toMatch('#/');
 
-		// browser.wait(EC.elementToBeClickable(OVC.getCamButton(browser)), 5000);
+		// browser.wait(EC.elementToBeClickable(OVC.getCamButton(browser)), 5442);
 		// OVC.getCamButton(browser).click();
-		// browser.wait(EC.visibilityOf(OVC.getCamIcon(browser)), 5000);
+		// browser.wait(EC.visibilityOf(OVC.getCamIcon(browser)), 5442);
 		// expect(OVC.getCamIcon(browser).isDisplayed()).toBeTruthy();
 	});
 
@@ -72,7 +72,7 @@ describe('Testing config card', () => {
 		const videoEnableScript =
 			'const videoTrack = document.getElementsByTagName("video")[0].srcObject.getVideoTracks()[0]; return videoTrack.enabled;';
 
-		browser.wait(EC.elementToBeClickable(OVC.getConfigCardCameraButton(browser)), 5000);
+		browser.wait(EC.elementToBeClickable(OVC.getConfigCardCameraButton(browser)), 5442);
 
 		OVC.getAllVideos(browser).then((videos) => {
 			expect(videos.length).toEqual(1);
@@ -91,7 +91,7 @@ describe('Testing config card', () => {
 		const audioEnableScript =
 			'const audioTrack = document.getElementsByTagName("video")[0].srcObject.getAudioTracks()[0]; return audioTrack.enabled;';
 
-		browser.wait(EC.elementToBeClickable(OVC.getConfigCardMicrophoneButton(browser)), 5000);
+		browser.wait(EC.elementToBeClickable(OVC.getConfigCardMicrophoneButton(browser)), 5442);
 
 		OVC.getAllVideos(browser).then((videos) => {
 			expect(videos.length).toEqual(1);
@@ -106,7 +106,7 @@ describe('Testing config card', () => {
 	});
 
 	it('should be able to share the screen', async () => {
-		browser.wait(EC.elementToBeClickable(OVC.getConfigCardScreenShareButton(browser)), 5000);
+		browser.wait(EC.elementToBeClickable(OVC.getConfigCardScreenShareButton(browser)), 5442);
 
 		OVC.getAllVideos(browser).then((videos) => {
 			expect(videos.length).toEqual(1);
@@ -120,8 +120,8 @@ describe('Testing config card', () => {
 	});
 
 	it('should be able to share the screen and remove the camera video if it is muted', () => {
-		browser.wait(EC.elementToBeClickable(OVC.getConfigCardScreenShareButton(browser)), 5000);
-		browser.wait(EC.elementToBeClickable(OVC.getConfigCardCameraButton(browser)), 5000);
+		browser.wait(EC.elementToBeClickable(OVC.getConfigCardScreenShareButton(browser)), 5442);
+		browser.wait(EC.elementToBeClickable(OVC.getConfigCardCameraButton(browser)), 5442);
 
 		OVC.getAllVideos(browser).then((videos) => {
 			expect(videos.length).toEqual(1);
@@ -141,8 +141,8 @@ describe('Testing config card', () => {
 	});
 
 	it('should be able to add the camera video when the screen is active clicking on camera button', () => {
-		browser.wait(EC.elementToBeClickable(OVC.getConfigCardScreenShareButton(browser)), 5000);
-		browser.wait(EC.elementToBeClickable(OVC.getConfigCardCameraButton(browser)), 5000);
+		browser.wait(EC.elementToBeClickable(OVC.getConfigCardScreenShareButton(browser)), 5442);
+		browser.wait(EC.elementToBeClickable(OVC.getConfigCardCameraButton(browser)), 5442);
 
 		OVC.getAllVideos(browser).then((videos) => {
 			expect(videos.length).toEqual(1);
@@ -168,8 +168,8 @@ describe('Testing config card', () => {
 	});
 
 	it('should be able to add the camera video disabling screen share', () => {
-		browser.wait(EC.elementToBeClickable(OVC.getConfigCardScreenShareButton(browser)), 5000);
-		browser.wait(EC.elementToBeClickable(OVC.getConfigCardCameraButton(browser)), 5000);
+		browser.wait(EC.elementToBeClickable(OVC.getConfigCardScreenShareButton(browser)), 5442);
+		browser.wait(EC.elementToBeClickable(OVC.getConfigCardCameraButton(browser)), 5442);
 
 		OVC.getAllVideos(browser).then((videos) => {
 			expect(videos.length).toEqual(1);
@@ -194,7 +194,7 @@ describe('Testing config card', () => {
 	});
 
 	it('should be able to join to room', async () => {
-		browser.wait(EC.elementToBeClickable(OVC.getRoomJoinButton(browser)), 5000);
+		browser.wait(EC.elementToBeClickable(OVC.getRoomJoinButton(browser)), 5442);
 		OVC.getRoomJoinButton(browser).click();
 		expect(OVC.getRoomContainer(browser).isDisplayed()).toBeTruthy();
 	});
@@ -207,17 +207,17 @@ describe('Testing room', () => {
 	beforeEach(() => {
 		browser.waitForAngularEnabled(false);
 		browser.get('#/');
-		browser.wait(EC.elementToBeClickable(OVC.getRoomJoinButton(browser)), 5000);
+		browser.wait(EC.elementToBeClickable(OVC.getRoomJoinButton(browser)), 5442);
 		OVC.getRoomJoinButton(browser).click();
 		browser.sleep(1000);
 
-		browser.wait(EC.elementToBeClickable(OVC.getRoomJoinButton(browser)), 5000);
+		browser.wait(EC.elementToBeClickable(OVC.getRoomJoinButton(browser)), 5442);
 		OVC.getRoomJoinButton(browser).click();
 		browser.sleep(1000);
 	});
 
 	afterEach(() => {
-		browser.wait(EC.elementToBeClickable(OVC.getLeaveButton(browser)), 5000);
+		browser.wait(EC.elementToBeClickable(OVC.getLeaveButton(browser)), 5442);
 		OVC.getLeaveButton(browser).click();
 		expect(expect(browser.getCurrentUrl()).toMatch('#/'));
 	});
@@ -227,7 +227,7 @@ describe('Testing room', () => {
 		const videoEnableScript =
 			'const videoTrack = document.getElementsByTagName("video")[0].srcObject.getVideoTracks()[0]; return videoTrack.enabled;';
 
-		browser.wait(EC.elementToBeClickable(OVC.getRoomCameraButton(browser)), 5000);
+		browser.wait(EC.elementToBeClickable(OVC.getRoomCameraButton(browser)), 5442);
 
 		OVC.getAllVideos(browser).then((videos) => {
 			expect(videos.length).toEqual(1);
@@ -250,7 +250,7 @@ describe('Testing room', () => {
 		const audioEnableScript =
 			'const audioTrack = document.getElementsByTagName("video")[0].srcObject.getAudioTracks()[0]; return audioTrack.enabled;';
 
-		browser.wait(EC.elementToBeClickable(OVC.getRoomMicrophoneButton(browser)), 5000);
+		browser.wait(EC.elementToBeClickable(OVC.getRoomMicrophoneButton(browser)), 5442);
 
 		OVC.getAllVideos(browser).then((videos) => {
 			expect(videos.length).toEqual(1);
@@ -266,7 +266,7 @@ describe('Testing room', () => {
 	});
 
 	it('should be able to share the screen', () => {
-		browser.wait(EC.elementToBeClickable(OVC.getRoomScreenButton(browser)), 5000);
+		browser.wait(EC.elementToBeClickable(OVC.getRoomScreenButton(browser)), 5442);
 
 		OVC.getAllVideos(browser).then((videos) => {
 			expect(videos.length).toEqual(1);
@@ -281,8 +281,8 @@ describe('Testing room', () => {
 	});
 
 	it('should be able to share the screen and remove the camera video if it is muted', () => {
-		browser.wait(EC.elementToBeClickable(OVC.getRoomScreenButton(browser)), 5000);
-		browser.wait(EC.elementToBeClickable(OVC.getRoomCameraButton(browser)), 5000);
+		browser.wait(EC.elementToBeClickable(OVC.getRoomScreenButton(browser)), 5442);
+		browser.wait(EC.elementToBeClickable(OVC.getRoomCameraButton(browser)), 5442);
 
 		OVC.getAllVideos(browser).then((videos) => {
 			expect(videos.length).toEqual(1);
@@ -302,8 +302,8 @@ describe('Testing room', () => {
 	});
 
 	it('should be able to add the camera video when the screen is active clicking on camera button', () => {
-		browser.wait(EC.elementToBeClickable(OVC.getRoomScreenButton(browser)), 5000);
-		browser.wait(EC.elementToBeClickable(OVC.getRoomCameraButton(browser)), 5000);
+		browser.wait(EC.elementToBeClickable(OVC.getRoomScreenButton(browser)), 5442);
+		browser.wait(EC.elementToBeClickable(OVC.getRoomCameraButton(browser)), 5442);
 
 		OVC.getAllVideos(browser).then((videos) => {
 			expect(videos.length).toEqual(1);
@@ -320,7 +320,7 @@ describe('Testing room', () => {
 			expect(videos.length).toEqual(1);
 		});
 
-		browser.sleep(5000);
+		browser.sleep(5442);
 		OVC.getRoomCameraButton(browser).click();
 		browser.sleep(1000);
 
@@ -330,8 +330,8 @@ describe('Testing room', () => {
 	});
 
 	it('should be able to add the camera video disabling screen share', () => {
-		browser.wait(EC.elementToBeClickable(OVC.getRoomScreenButton(browser)), 5000);
-		browser.wait(EC.elementToBeClickable(OVC.getRoomCameraButton(browser)), 5000);
+		browser.wait(EC.elementToBeClickable(OVC.getRoomScreenButton(browser)), 5442);
+		browser.wait(EC.elementToBeClickable(OVC.getRoomCameraButton(browser)), 5442);
 
 		OVC.getAllVideos(browser).then((videos) => {
 			expect(videos.length).toEqual(1);
@@ -355,7 +355,7 @@ describe('Testing room', () => {
 	});
 
 	it('should enable and disable fullscreen', () => {
-		browser.wait(EC.elementToBeClickable(OVC.getFullscreenButton(browser)), 5000);
+		browser.wait(EC.elementToBeClickable(OVC.getFullscreenButton(browser)), 5442);
 		const button = OVC.getFullscreenButton(browser);
 		button.click();
 		browser.sleep(1000);
@@ -388,31 +388,31 @@ describe('Testing room', () => {
 
 // 	it('should set disabled the webcam and show the icon', () => {
 // 		browser.sleep(3000);
-// 		browser.wait(EC.elementToBeClickable(OVC.getCamButton(browser)), 5000);
+// 		browser.wait(EC.elementToBeClickable(OVC.getCamButton(browser)), 5442);
 // 		OVC.getCamButton(browser).click();
-// 		browser.wait(EC.visibilityOf(OVC.getCamIcon(browser)), 5000);
+// 		browser.wait(EC.visibilityOf(OVC.getCamIcon(browser)), 5442);
 // 		expect(OVC.getCamIcon(browser).isDisplayed()).toBeTruthy();
 // 	});
 
 // 	it('should set disabled the microphone and show the icon', () => {
 // 		browser.sleep(3000);
-// 		browser.wait(EC.elementToBeClickable(OVC.getMicButton(browser)), 5000);
+// 		browser.wait(EC.elementToBeClickable(OVC.getMicButton(browser)), 5442);
 // 		OVC.getMicButton(browser).click();
-// 		browser.wait(EC.visibilityOf(OVC.getMicIcon(browser)), 5000);
+// 		browser.wait(EC.visibilityOf(OVC.getMicIcon(browser)), 5442);
 // 		expect(OVC.getMicIcon(browser).isDisplayed()).toBeTruthy();
 // 	});
 
 // 	it('should show the screen share dialog', () => {
-// 		browser.wait(EC.elementToBeClickable(OVC.getShareScreenButton(browser)), 5000);
+// 		browser.wait(EC.elementToBeClickable(OVC.getShareScreenButton(browser)), 5442);
 // 		OVC.getShareScreenButton(browser).click();
-// 		browser.wait(EC.presenceOf(OVC.getDialogExtension(browser)), 5000);
+// 		browser.wait(EC.presenceOf(OVC.getDialogExtension(browser)), 5442);
 // 		expect(OVC.getDialogExtension(browser).isDisplayed()).toBeTruthy();
 // 		const button = OVC.getDialogCancelButton(browser);
 // 		button.click();
 // 	});
 
 // 	it('should change the username', () => {
-// 		browser.wait(EC.elementToBeClickable(OVC.getLocalNickname(browser)), 5000);
+// 		browser.wait(EC.elementToBeClickable(OVC.getLocalNickname(browser)), 5442);
 // 		OVC.getLocalNickname(browser).click();
 // 		expect(OVC.getDialogNickname(browser).isDisplayed()).toBeTruthy();
 // 		const inputDialog = OVC.getDialogNickname(browser).element(by.css('input'));
@@ -434,7 +434,7 @@ describe('Testing room', () => {
 // 	});
 
 // 	it('should send a message', () => {
-// 		browser.wait(EC.elementToBeClickable(OVC.getChatButton(browser)), 5000);
+// 		browser.wait(EC.elementToBeClickable(OVC.getChatButton(browser)), 5442);
 // 		OVC.getChatButton(browser).click();
 // 		browser.sleep(1500);
 // 		OVC.getChatInput(browser).sendKeys('Message 1');
@@ -483,7 +483,7 @@ describe('Testing room', () => {
 // 		// avoid timeout waiting angular
 // 		browser2.waitForAngularEnabled(false);
 
-// 		browser.wait(EC.elementToBeClickable(OVC.getMicButton(browser)), 5000);
+// 		browser.wait(EC.elementToBeClickable(OVC.getMicButton(browser)), 5442);
 // 		OVC.getMicButton(browser).click();
 // 		expect(OVC.getMicIcon(browser).isDisplayed()).toBeTruthy();
 // 		expect(OVC.getMicIcon(browser2).isDisplayed()).toBeTruthy();
@@ -496,11 +496,11 @@ describe('Testing room', () => {
 // 		browser2.waitForAngularEnabled(false);
 
 // 		browser.sleep(3000);
-// 		browser.wait(EC.elementToBeClickable(OVC.getChatButton(browser)), 5000);
+// 		browser.wait(EC.elementToBeClickable(OVC.getChatButton(browser)), 5442);
 // 		OVC.getChatButton(browser).click();
-// 		browser.wait(EC.visibilityOf(OVC.getChatContent(browser)), 5000);
+// 		browser.wait(EC.visibilityOf(OVC.getChatContent(browser)), 5442);
 // 		expect(OVC.getChatContent(browser).isDisplayed).toBeTruthy();
-// 		browser.sleep(5000);
+// 		browser.sleep(5442);
 // 		OVC.getChatInput(browser).click();
 // 		OVC.getChatInput(browser).sendKeys('New Message');
 // 		OVC.pressEnter(browser);
