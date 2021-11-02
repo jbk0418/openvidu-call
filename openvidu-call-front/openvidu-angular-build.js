@@ -4,7 +4,7 @@ const mainComponentDest = './projects/openvidu-angular/src/lib/openvidu-angular.
 const videoRoomDest = './projects/openvidu-angular/src/lib/video-room/';
 const sharedDest = './projects/openvidu-angular/src/lib/shared/';
 const environmentDest = './projects/openvidu-angular/src/lib/environments/';
-
+// 
 async function copyFiles() {
   try {
     await fs.copy('./src/app/video-room/', videoRoomDest);
