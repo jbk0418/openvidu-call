@@ -8,13 +8,13 @@
   padding: 0;
 }
 
-.reconnecting-container{
-  width: 100%;
+.config-card {
+  position: absolute;
+  width: -webkit-fill-available;
+  width: -moz-available;
   height: 100%;
   z-index: 1000;
-  background-color: black;
-  opacity: 80%;
-  position: absolute;
+  background-color: rgba(0, 0, 0, 0.63);
 }
 
 .sidenav-container {

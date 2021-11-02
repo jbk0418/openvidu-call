@@ -137,7 +137,6 @@ export class RoomConfigComponent implements OnInit, OnDestroy {
 		if (!!audioSource) {
 			// Is New deviceId different than older?
 			if (this.oVDevicesService.needUpdateAudioTrack(audioSource)) {
-				console.log(this.camSelected);
 				const mirror = this.oVDevicesService.cameraNeedsMirror(this.camSelected.device);
 				await this.openViduWebRTCService.replaceTrack(null, audioSource, mirror);
 				this.oVDevicesService.setMicSelected(audioSource);

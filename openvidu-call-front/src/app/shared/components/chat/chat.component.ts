@@ -26,7 +26,6 @@ export class ChatComponent implements OnInit, OnDestroy {
 
 	@HostListener('document:keydown.escape', ['$event'])
 	onKeydownHandler(event: KeyboardEvent) {
-		console.log(event);
 		if (this.chatOpened) {
 			this.close();
 		}

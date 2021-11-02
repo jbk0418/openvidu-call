@@ -9,7 +9,7 @@
 	></app-room-config>
 
 	<div *ngIf="localUsers && localUsers.length > 0">
-		<div *ngIf="isConnectionLost" class="reconnecting-container"></div>
+		<div *ngIf="isConnectionLost" class="config-card"></div>
 		<app-toolbar
 			*ngIf="ovSettings | hasToolbar"
 			[lightTheme]="lightTheme"
