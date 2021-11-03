@@ -4,12 +4,12 @@
   height: 100%;
   text-align: center;
   position: relative;
-  color: #fff;
+  color: rgb(146, 146, 146);
 }
 
 #header, .footer {
   background-color: transparent;
-  color: #ffffff;
+  color: #8d8d8d;
 }
 
 .roomError{
@@ -24,7 +24,7 @@
 }
 
 .footer a {
-  color: #ffffff;
+  color: rgba(201, 241, 241);
 
 }
 #header_img {
@@ -52,7 +52,7 @@
 h4 {
   font-size: 25px;
   font-weight: 500;
-  color: #fff;
+  color: rgb(255, 255, 255);
   position: relative;
   padding-bottom: 5px;
 }
@@ -63,7 +63,7 @@ h4 {
   max-width: 700px;
   width: 75%;
   margin: auto;
-  background: rgba(221, 221, 221, 0.856);
+  background: rgba(201, 241, 241)
 }
 
 #room_card mat-form-field {
@@ -105,7 +105,7 @@ h4 {
   min-width: 300px;
   margin: 10px auto;
   max-width: 50%;
-  background: #fff;
+  background: rgb(255, 255, 255);
   padding: 6px 10px;
   position: relative;
   border-radius: 10px 5px 10px 0px;
@@ -132,7 +132,7 @@ h4 {
   font-size: 16px;
   font-weight: bold;
   padding: 0 20px;
-  background: #00ad4e;
+  background: #1281ad;
   color: #fff;
   border-radius: 0px 5px 10px 0px;
   transition: 0.3s;
@@ -141,7 +141,7 @@ h4 {
 }
 
 .joinButton:hover {
-  background: #009242;
+  background: #0dac9e;
 }
 
 

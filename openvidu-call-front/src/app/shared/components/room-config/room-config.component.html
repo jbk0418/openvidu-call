@@ -6,7 +6,6 @@
 				<!-- Modal Header -->
 				<div class="modal-header cardHeader">
 					<div class="headerLogo">
-						<img id="header_img" alt="OpenVidu Logo" src="assets/images/openvidu_logo_grey.png" />
 					</div>
 					<h3 class="headerTitle">{{ mySessionId }}</h3>
 
@@ -67,7 +66,6 @@
 										(click)="onSelectAvatar(avatarTypeEnum.DEFAULT)"
 										[style.background]="avatarSelected === avatarTypeEnum.DEFAULT ? 'lightgreen' : 'transparent'"
 									>
-										<img id="avatarImg" *ngIf="openviduAvatar" [src]="openviduAvatar" />
 									</div>
 								</div>
 							</div>
