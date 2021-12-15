@@ -1,3 +1,18 @@
+/* 시각 장애인 알림창 */
+
+.info {
+  position: absolute;
+  width: 300px;
+  top: 50%;
+  left: 50%;
+  margin-left: -150px;
+  display: flex;
+  justify-content: center;
+  box-shadow: 7px 7px 5px gray;
+  border: 1px solid blueviolet;
+}
+
+
 .section1 {
   background: url('../../assets/images/bg.webp')  top center no-repeat;
   background-size: cover;
@@ -11,6 +26,9 @@
   background-color: transparent;
   color: #8d8d8d;
 }
+
+
+
 
 .roomError{
   font-size: 16px;

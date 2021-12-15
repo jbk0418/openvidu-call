@@ -1,6 +1,8 @@
 <div class="section1">
 	
 	<div class="container">
+		<ngb-alert class = "info" [dismissible]="true" type="info" (ready)="start()" (click)="blindAlert.close()" *ngIf="blindAlert.visible">{{blindAlert.message}}</ngb-alert>
+		<button type="hello" (click) = "start()" id = "blindbutton">hi</button>
 		<div class="ovInfo">
 			<img class="ovLogo" alt="OpenVidu Logo" src="assets/images/openvidu_logo.png" style="padding: 20px"/>
 			<h4 style="color:rgb(94, 94, 170)">회의 아이디를 간편하게 입력해주세요</h4>
