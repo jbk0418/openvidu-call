@@ -21,7 +21,7 @@ import { OpenViduWebrtcService } from '../../services/openvidu-webrtc/openvidu-w
 import { LocalUsersService } from '../../services/local-users/local-users.service';
 import { TokenService } from '../../services/token/token.service';
 import { AvatarService } from '../../services/avatar/avatar.service';
-
+import Speech from 'speak-tts';
 @Component({
 	selector: 'app-room-config',
 	templateUrl: './room-config.component.html',
@@ -64,6 +64,10 @@ export class RoomConfigComponent implements OnInit, OnDestroy {
 	private oVUsersSubscription: Subscription;
 	private screenShareStateSubscription: Subscription;
 
+	html = '';
+	result = '';
+	speech: any;
+	speechData: any;
 	constructor(
 		private route: ActivatedRoute,
 		private utilsSrv: UtilsService,
@@ -76,8 +80,70 @@ export class RoomConfigComponent implements OnInit, OnDestroy {
 		private avatarService: AvatarService
 	) {
 		this.log = this.loggerSrv.get('RoomConfigComponent');
+
+		this.speech = new Speech() // will throw an exception if not browser supported
+    if(this.speech .hasBrowserSupport()) { // returns a boolean
+        console.log("speech synthesis supported")
+        this.speech.init({
+                'volume': 1,
+                'lang': 'ko-KR',
+                'rate': 1,
+                'pitch': 1,
+                'voice':'Google South Korea Korean Female',
+                'splitSentences': true,
+                'listeners': {
+                    'onvoiceschanged': (voices) => {
+                        console.log("Event voiceschanged", voices)
+                    }
+                }
+        }).then((data) => {
+            // The "data" object contains the list of available voices and the voice synthesis params
+            console.log("Speech is ready, voices are available", data)
+            this.speechData = data;
+            data.voices.forEach(voice => {
+            console.log(voice.name + " "+ voice.lang)
+            });
+        }).catch(e => {
+            console.error("An error occured while initializing : ", e)
+        })
+    }
 	}
 
+
+
+	start(){
+		this.html = '';
+	
+	
+		var temporalDivElement = document.createElement("div");
+		// Set the HTML content with the providen
+		temporalDivElement.innerHTML = this.html;
+		// Retrieve the text property of the element (cross-browser support)
+		this.result = temporalDivElement.textContent || temporalDivElement.innerText || "";
+		
+		  this.speech.speak({
+			//   text: this.result,
+			text: "방 설정 화면 입니다. C키를 눌러서 카메라 설정을 하고, M키를 눌러서 마이크 설정을 합니다. 설정을 마치면 엔터키를 누르면 방에 접속합니다. 방 이름은 N키를 누르면 확인할 수 있습니다.",
+		  }).then(() => {
+			  console.log("Success !")
+		  }).catch(e => {
+			  console.error("An error occurred :", e) 
+		  })
+	  }
+
+	  room_name(){
+		this.speech.speak({
+			//   text: this.result,
+			text: this.mySessionId ,
+		  }).then(() => {
+			  console.log("Success !")
+		  }).catch(e => {
+			  console.error("An error occurred :", e) 
+		  })
+	  }
+
+
+	
 	@HostListener('window:beforeunload')
 	beforeunloadHandler() {
 		this.close();
@@ -227,7 +293,50 @@ export class RoomConfigComponent implements OnInit, OnDestroy {
 			this.storageSrv.set(Storage.USER_NICKNAME, value);
 		});
 	}
+	@HostListener('document:keydown.c', ['$camera_event'])
+	
+	
+	camera_handler(camera_event: KeyboardEvent){
+		console.log(camera_event);
+		this.toggleCam();
+	}
+	
+	
+	@HostListener('document:keydown.enter ', ['$join_enter'])
 
+	join_handler(join_enter: KeyboardEvent){
+		console.log(join_enter);
+		this.joinSession();
+	}
+
+	@HostListener('document:keydown.m', ['$mike_event'])
+
+	mike_handler(mike_event: KeyboardEvent){
+		console.log(mike_event)
+		this.toggleMic();
+		this.speech.speak({
+			//   text: this.result,
+			text: this.microphones ,
+		  }).then(() => {
+			  console.log("Success !")
+		  }).catch(e => {
+			  console.error("An error occurred :", e) 
+		  })
+	}
+
+	@HostListener('document:keydown.F', ['$info_event'])
+
+	info_handler(info_event: KeyboardEvent){
+		console.log(info_event);
+		this.start();
+	}
+
+	@HostListener('document:keydown.N', ['$name_event'])
+
+	nameinfo_handler(name_event: KeyboardEvent){
+		console.log(name_event)
+		this.room_name();
+	}
 	eventKeyPress(event) {
 		if (event && event.keyCode === 13 && this.nicknameFormControl.valid) {
 			this.joinSession();
@@ -393,4 +502,21 @@ export class RoomConfigComponent implements OnInit, OnDestroy {
 			this.log.e(e.message);
 		});
 	}
+
+
+
+	pause(){
+		this.speech.pause();
+	  }
+	  resume(){
+		this.speech.resume();
+	  }
+	
+	  setLanguage(i){
+		console.log(i);
+		console.log(this.speechData.voices[i].lang + this.speechData.voices[i].name);
+		this.speech.setLanguage(this.speechData.voices[i].lang);
+		this.speech.setVoice(this.speechData.voices[i].name);
+	  }
+	
 }

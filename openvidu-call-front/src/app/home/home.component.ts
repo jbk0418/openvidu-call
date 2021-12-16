@@ -44,13 +44,13 @@ export class HomeComponent implements OnInit {
         })
     }
 
-	this.router.events.subscribe((e) => {
-		if (e instanceof NavigationEnd) {
-			this.start()
-			console.log("hello");
-			// Function you want to call here
-		}
-	 });
+	// this.router.events.subscribe((e) => {
+	// 	if (e instanceof NavigationEnd) {
+	// 		this.start()
+	// 		console.log("hello");
+	// 		// Function you want to call here
+	// 	}
+	//  });
 	}
 
 
@@ -66,7 +66,7 @@ export class HomeComponent implements OnInit {
 		
 		  this.speech.speak({
 			//   text: this.result,
-			text: "안녕하세요. 피어코 시스템 입니다. 사용법을 알려 드리겠습니다. 매 화면 마다 엔터키를 누르면 안내 음성을 들을 수 있습니다. 첫번째 화면에서는 탭키를 눌러서 방 이름을 변경 할 수 있습니다.",
+			text: "안녕하세요. 피어코 시스템 입니다. 사용법을 알려 드리겠습니다. 매 화면 마다 F를 누르면 안내 음성을 들을 수 있습니다. 첫번째 화면에서는 탭키를 눌러서 방 이름을 변경 할 수 있습니다. 그 다음 엔터를 눌러서 접속을 합니다.",
 		  }).then(() => {
 			  console.log("Success !")
 		  }).catch(e => {
@@ -76,7 +76,7 @@ export class HomeComponent implements OnInit {
 
 
 	//   키보드 이벤트
-	@HostListener('document:keydown.enter ', ['$event'])
+	@HostListener('document:keydown.F ', ['$event'])
 	
 	onKeydownHandler(event: KeyboardEvent) {
 		console.log(event);
